@@ -1,58 +1,167 @@
-# Hexatron FM Synthesizer
+# Hexatron Effects Suite
 
-Open source 6 operator fm synthesizer for max msp.  
-开源6运算符fm合成器，用于max msp。
+A complete suite with several effects units for Max Msp  
+一套完整的套件，带有多个Max Msp效果器  
 
-![amplitude envelopes](https://github.com/stgoddv/hexatron-fm-synthesizer/blob/master/static/preview1.PNG?raw=true)
+![Effects](https://raw.githubusercontent.com/stgoddv/hexatron-effects/master/static/Effects.PNG?raw=true)
 
-![harmonic selection](https://github.com/stgoddv/hexatron-fm-synthesizer/blob/master/static/preview2.PNG?raw=true)
-
-Listen to some samples!  
-(Press right click and then "save link as..." to download the file)
-
-* [Example.mp3](https://raw.githubusercontent.com/stgoddv/hexatron-fm-synthesizer/master/static/example.mp3) 
 
 # Table of Contents
 1. [Motivation](#motivation)
-2. [Features](#features)
+2. [Effects](#effects)
 3. [Installation](#installation)
-4. [Roadmap](#roadmap)
-5. [Contributions](#contributions)
-6. [License](#license)
+4. [Contributions](#contributions)
+5. [License](#license)
 
 ### Motivation
 
-I've always like the sound of Max MSP so I decided to build my own 6 FM Operator, both to learn about synthesis and to use it in my own compositions.
+This suite is the output of a personal research trying to understand how does effects works and how can I replicate the effects units in Max Msp from scratch. I think that the result is pretty stable and has a decent sound quality.
 
-### Features
+### Effects
+
+1. Delay
+
+![Delay](https://raw.githubusercontent.com/stgoddv/hexatron-effects/master/static/Delay.PNG?raw=true)
 
 
-1. 6 mapeable FM operators that can be modulated in any way possible by means of a modulation matrix.
-2. Each modulator has it's own: Amplitude envelope, Waveform, Frequency coarse and fine adjustment, Modulation index and optional perlin noise addition. You can also fix frequencies for specifics operators.
-3. Each amplitude envelope can be looped independently, making complex nonlinear sound textures. Each envelope has it's own duration also.
-4. Tons of predefined waveforms: Sine, Square, Triangle, Random, White and Pink Noise and Custom.
-5. The custom waveform can be done selecting each harmonic individually. You can choose between 16, 32 or 64 harmonics.
-6. Global parameters: pitch transposition, panning, global time strech for envelopes, tone.
-7. You can save and load presets. Also there's a little keyboard integrated for rapid tests.
-8. It's polyphonic! You can toggle up to 10 parallel voices.
+* 2 modes of operation: 
+    * Simple: There aren't frequency bands involved but you can control the delay time for each audio channel separately.
+    * Multiband: You can control delay time for 3 different frequency bands: low, medium, high.
+* Independent delay times for each audio channel
+* Independent delay times for each frequency band
+* Independent volume for each frequency band
+* Independent feedback factor for each frequency band
+* Frequency band thresholds selectors
+* Dry / wet
+
+2. Filter
+
+![Filter](https://raw.githubusercontent.com/stgoddv/hexatron-effects/master/static/Filter.PNG?raw=true)
+
+
+* You can choose betweem 1 to 20 filters simultaneously.
+* Multiple modes of operation:
+    * Lowpass
+    * Highpass
+    * Bandpass
+    * Bandstop
+    * Peaknotch
+    * Lowshelf
+    * Highshelf
+    * Resonant
+    * Allpass
+* Dry / wet selector
+* Preset manager to save states
+
+3. Multiband Filter
+
+![Multiband](https://raw.githubusercontent.com/stgoddv/hexatron-effects/master/static/Multiband.PNG?raw=true)
+
+
+* It consists of 29 band pass filters placed in a logarithmic way across the full audible frequency range
+* You can choose the amplitud for each filter band
+* The amplitude range for each band goes from -60 db to +12 db
+* Dry / wet selector
+
+4. Chorus
+
+![Chorus](https://raw.githubusercontent.com/stgoddv/hexatron-effects/master/static/Chorus.PNG?raw=true)
+
+
+* Optional parallel voices from 1 to 8
+* Rate selector
+* Depth selector
+* Independent delay time for each audio channel
+* Independent feedback for each audio channel
+* Dry / wet selector
+
+5. Reverb
+
+![Reverb](https://raw.githubusercontent.com/stgoddv/hexatron-effects/master/static/Reverb.PNG?raw=true)
+
+
+* Based on the famous YafrOp reverb example of Max Msp
+* Classical reverb parameters:
+    * Size
+    * Decay
+    * Damp
+    * Diffusion
+* Wet amplitude gain
+* Dry / wet selector
+
+6. Tremolo
+
+![Tremolo](https://raw.githubusercontent.com/stgoddv/hexatron-effects/master/static/Tremolo.PNG?raw=true)
+
+
+* Tremolo rate selector
+* Dry / wet selector
+
+7. Ring modulation
+
+![RingModulator](https://raw.githubusercontent.com/stgoddv/hexatron-effects/master/static/RingModulator.PNG?raw=true)
+
+
+* Signal multiplication between input signal and a oscillator
+* Multiple waveforms:
+    * Cycle
+    * Triangle
+    * Sawtooth
+    * Random
+    * White Noise
+    * Pink Noise
+* Amplitude and offset selector for osc
+* Osc frequency selector
+* Filter type selector: lowband, bandband, highband, rejectband.
+* Cutoff frequency selector for filter
+* Reson selector
+* Dry / wet selector
+
+8. Harmonizer
+
+![Harmonizer](https://raw.githubusercontent.com/stgoddv/hexatron-effects/master/static/Harmonizer.PNG?raw=true)
+
+
+* Reharmonization plugin
+* 6 optionals signals paths
+* Each signal path has:
+    * Retune parameter
+    * Delay time parameter
+    * Pan parameter
+    * Amplitude parameter
+* Input / output gains
+* Dry / wet selector
+
+9. Comb
+
+![Comb](https://raw.githubusercontent.com/stgoddv/hexatron-effects/master/static/Comb.PNG?raw=true)
+
+
+* Comb filter plugin
+* 4 optionals signals paths
+* Each signal path has:
+    * Pitch parameter
+    * Detune parameter
+    * Depth parameter
+    * Rate parameter
+    * Pan parameter
+    * Amplitude parameter
+* Feedforward dial
+* Feedback dial
+* Dry / wet selector
+
 
 ### Installation
 
 To try quickly:  
 
-Simply go to src/Hexatron and open the file called Hexatron.maxproj
+Simply go to src/\HexatronEffects and open the file called \HexatronEffects.maxproj
 
 Permanent installation:  
 
 1. Download repository
 2. Put folder in your Max 8 path
-3. Create a bpatcher called "6FM"
-
-### Roadmap
-
-* Add panning for each independent operator
-* Optimize
-* Add basic filter at main output
+3. You can then choose some effect and create a bpatcher with its name. See the above section for more details about the effects units included in this suite.
 
 ### Contributions
 
